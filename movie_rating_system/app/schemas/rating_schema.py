@@ -3,10 +3,6 @@ from typing import Optional, List
 from datetime import datetime
 
 
-# =========================
-# ===== RATING RESPONSES
-# =========================
-
 class MovieRatingSchema(BaseModel):
     id: int
     title: str
@@ -29,10 +25,6 @@ class ResponseRatingModel(BaseModel):
     data: Optional[PaginatedMovieRatingSchema] = None
     error: Optional[dict] = None
 
-
-# =========================
-# ===== RATING REQUEST / RESPONSE
-# =========================
 
 class RatingCreate(BaseModel):
     score: int = Field(..., ge=1, le=10)
