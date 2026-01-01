@@ -107,14 +107,16 @@ Create a `.env` file based on the example file:
 
 ```bash
 cp .env.example .env
+```
 
 ---
 
 ### 3️⃣ Build and Start Containers
 
 From the root directory of the project, run the following command:
-
+```
 docker compose up --build
+```
 
 This command will build the required Docker images and start the following services:
 
