@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    container_name: movie_db
+    environment:
+      POSTGRES_DB: movie_rating_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./app/scripts:/scripts
+
+    ports:
+      - "5439:5432"
+
+  app:
+    build: .
+    container_name: fastapi_app
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/movie_rating_db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app/scripts:/app/scripts
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
