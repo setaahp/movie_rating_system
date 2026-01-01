@@ -1,12 +1,12 @@
 
-# 🎬 Movie Rating System 
+# Movie Rating System 
 
 A RESTful back-end system for managing movies and user ratings, developed as part of the **Software Engineering** course at AUT.  
 This project is fully containerized and runs using **Docker Compose**.
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 
 This project is a **Movie Rating System Back-End** built with **Python** and **FastAPI**.  
 It provides APIs for managing movies, directors, genres, and movie ratings, following **RESTful principles** and a **layered architecture**.
@@ -21,7 +21,7 @@ The system supports:
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - **Python 3**
 - **FastAPI**
@@ -36,7 +36,7 @@ The system supports:
 
 
 
-## 🗄️ Database Design
+##  Database Design
 
 ### Main Tables
 
@@ -56,7 +56,7 @@ The system supports:
 
 ---
 
-## 🌐 API Endpoints (Phase 1)
+##  API Endpoints 
 
 ### Movies
 
@@ -72,7 +72,7 @@ The system supports:
 
 ---
 
-## 📦 Dataset (Required)
+##  Dataset (Required)
 
 Due to GitHub file size limitations and environment restrictions,
 large CSV dataset files are **not included** in this repository.
@@ -91,9 +91,9 @@ After downloading, your `scripts/` directory should look like this:
 
 ---
 
-## 🐳 Running the Project with Docker Compose
+##  Running the Project with Docker Compose
 
-### 1️⃣ Prerequisites
+### 1. Prerequisites
 Make sure you have installed:
 - **Docker**
 - **Docker Compose**
@@ -102,7 +102,7 @@ No additional tools (such as Git LFS) are required.
 
 ---
 
-### 2️⃣ Environment Variables
+### 2. Environment Variables
 Create a `.env` file based on the example file:
 
 ```bash
@@ -111,7 +111,7 @@ cp .env.example .env
 
 ---
 
-### 3️⃣ Build and Start Containers
+### 3. Build and Start Containers
 
 From the root directory of the project, run the following command:
 ```
