@@ -53,6 +53,49 @@ class MovieRepository:
         )
 
     @staticmethod
+    def create_movie(db: Session, movie_data: dict, genres: List[Genre]) -> Movie:
+        movie = Movie(**movie_data)
+        movie.genres = genres  
+        db.add(movie)
+        db.commit()
+        db.refresh(movie)
+        return movie
+
+
+    @staticmethod
+    def update_movie(
+        db: Session,
+        movie_id: int,
+        update_data: dict,
+        genres: Optional[List[Genre]] = None  
+    ) -> Optional[Movie]:
+
+        movie = db.query(Movie).filter(Movie.id == movie_id).first()
+        if not movie:
+            return None
+
+        for key, value in update_data.items():
+            if value is not None:
+                setattr(movie, key, value)
+
+        if genres is not None:
+            movie.genres = genres  
+        db.commit()
+        db.refresh(movie)
+        return movie
+
+
+    @staticmethod
+    def delete_movie(db: Session, movie_id: int) -> bool:
+        movie = db.query(Movie).filter(Movie.id == movie_id).first()
+        if not movie:
+            return False
+
+        db.delete(movie)
+        db.commit()
+        return True
+
+    @staticmethod
     def movie_exists(db: Session, movie_id: int) -> bool:
         return db.query(Movie).filter(Movie.id == movie_id).first() is not None
 

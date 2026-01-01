@@ -16,4 +16,10 @@ class DirectorRepository:
     def get_all_directors(db: Session) -> List[Director]:
         return db.query(Director).all()
     
-    
+    @staticmethod
+    def create_director(db: Session, name: str) -> Director:
+        director = Director(name=name)
+        db.add(director)
+        db.commit()
+        db.refresh(director)
+        return director
