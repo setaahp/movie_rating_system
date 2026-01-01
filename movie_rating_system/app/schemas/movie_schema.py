@@ -2,11 +2,6 @@ from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime
 
-
-# =========================
-# ===== COMMON / READ MODELS
-# =========================
-
 class DirectorBase(BaseModel):
     id: int
     name: str
@@ -51,11 +46,21 @@ class ResponseModel(BaseModel):
     error: Optional[dict] = None
 
 
+class MovieCreate(BaseModel):
+    title: str = Field(..., min_length=1, max_length=255)
+    director_id: int
+    release_year: int = Field(..., ge=1888, le=datetime.now().year)
+    cast: Optional[str] = None
+    genres: List[str] = Field(default_factory=list)
 
 
-# =========================
-# ===== SIMPLE RESPONSES
-# =========================
+class MovieUpdate(BaseModel):
+    title: Optional[str] = Field(None, min_length=1, max_length=255)
+    release_year: Optional[int] = Field(None, ge=1888, le=datetime.now().year)
+    cast: Optional[str] = None
+    genres: Optional[List[str]] = None
+
+
 
 class DirectorSimple(BaseModel):
     id: int
