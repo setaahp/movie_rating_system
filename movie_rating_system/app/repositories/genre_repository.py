@@ -19,6 +19,14 @@ class GenreRepository:
         return db.query(Genre).all()
     
     @staticmethod
+    def create_genre(db: Session, name: str) -> Genre:
+        genre = Genre(name=name)
+        db.add(genre)
+        db.commit()
+        db.refresh(genre)
+        return genre
+    
+    @staticmethod
     def get_genres_by_names(db: Session, genre_names: List[str]) -> List[Genre]:
         if not genre_names:
             return []

@@ -23,6 +23,16 @@ class RatingRepository:
         return db.query(Rating).filter(Rating.id == rating_id).first()
     
     @staticmethod
+    def delete_rating(db: Session, rating_id: int) -> bool:
+        rating = db.query(Rating).filter(Rating.id == rating_id).first()
+        if not rating:
+            return False
+        
+        db.delete(rating)
+        db.commit()
+        return True
+    
+    @staticmethod
     def get_average_rating(db: Session, movie_id: int) -> Optional[float]:
         from sqlalchemy import func
         result = db.query(func.avg(Rating.score)).filter(Rating.movie_id == movie_id).scalar()
