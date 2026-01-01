@@ -1,6 +1,5 @@
-# movie_rating_system
 
-# 🎬 Movie Rating System – Back-End (Phase 1)
+# 🎬 Movie Rating System 
 
 A RESTful back-end system for managing movies and user ratings, developed as part of the **Software Engineering** course at AUT.  
 This project is fully containerized and runs using **Docker Compose**.
