@@ -131,5 +131,6 @@ This project is developed for educational purposes.
 
 ---
 ### Team participants
---Hamid
---Setayesh
+- Hamid
+
+- Setayesh
